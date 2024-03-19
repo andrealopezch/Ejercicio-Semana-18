@@ -48,6 +48,20 @@ function ListStudents() {
       });
   };
 
+  const deleteStudent = (id) => {
+    fetch(
+      `https://demobootcamp-vercel-api-node-postgress.vercel.app/students/${id}`,
+      {
+        method: "DELETE",
+      }
+    ).then(() => {
+      setReloadFlag((prevFlag) => !prevFlag);
+      setStudents((prevStudents) =>
+        prevStudents.filter((student) => student.id !== id)
+      );
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewStudent((prevStudent) => ({
@@ -107,6 +121,7 @@ function ListStudents() {
       {students &&
         students.map((item) => (
           <div key={item.id}>
+            <button onClick={() => deleteStudent(item.id)}>Eliminar</button>
             <span>
               <strong>Id:</strong> {item.id},
             </span>
