@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BiSolidTrash, BiSave } from "react-icons/bi";
 
 function ListStudents() {
   const [students, setStudents] = useState([]);
@@ -44,7 +45,7 @@ function ListStudents() {
       .then((response) => response.json())
       .then((data) => {
         setReloadFlag((prevFlag) => !prevFlag);
-        setNewStudent({ id: "", name: "", lastname: "", notes: "" });
+        setNewStudent({ id: "", name: "", lastname: "", notes: "" }); // Reset input fields after saving
       });
   };
 
@@ -112,7 +113,7 @@ function ListStudents() {
           />
         </div>
         <button type="button" onClick={saveStudent}>
-          Guardar
+          <BiSave /> Guardar
         </button>
       </form>
       <hr />
@@ -121,7 +122,9 @@ function ListStudents() {
       {students &&
         students.map((item) => (
           <div key={item.id}>
-            <button onClick={() => deleteStudent(item.id)}>Eliminar</button>
+            <button onClick={() => deleteStudent(item.id)}>
+              <BiSolidTrash /> Eliminar
+            </button>
             <span>
               <strong>Id:</strong> {item.id},
             </span>
