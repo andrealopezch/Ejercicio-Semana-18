@@ -72,57 +72,68 @@ function ListStudents() {
   };
 
   return (
-    <div>
+    <div className="container mt-4">
       <h1>Agregar Estudiante</h1>
-      <div></div>
+      <div className="mb-4"></div>
       <form>
-        <div>
+        <div className="mb-3">
           <input
             type="text"
+            className="form-control"
             placeholder="ID"
             name="id"
             value={newStudent.id}
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="mb-3">
           <input
             type="text"
+            className="form-control"
             placeholder="Nombre"
             name="name"
             value={newStudent.name}
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="mb-3">
           <input
             type="text"
+            className="form-control"
             placeholder="Apellido"
             name="lastname"
             value={newStudent.lastname}
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="mb-3">
           <input
             type="text"
+            className="form-control"
             placeholder="Nota"
             name="notes"
             value={newStudent.notes}
             onChange={handleInputChange}
           />
         </div>
-        <button type="button" onClick={saveStudent}>
+        <button
+          type="button"
+          className="btn btn-success m-1"
+          onClick={saveStudent}
+        >
           <BiSave /> Guardar
         </button>
       </form>
       <hr />
       <h1>Lista de Estudiantes</h1>
-      <div></div>
+      <div className="mb-4"></div>
       {students &&
         students.map((item) => (
-          <div key={item.id}>
-            <button onClick={() => deleteStudent(item.id)}>
+          <div key={item.id} className="mb-3">
+            <button
+              className="btn btn-danger m-1"
+              onClick={() => deleteStudent(item.id)}
+            >
               <BiSolidTrash /> Eliminar
             </button>
             <span>
